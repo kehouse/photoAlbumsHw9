@@ -12,7 +12,7 @@ section {
   display: block;
 }
 
-header, footer {
+header {
   display: block;
   width: 100%;
   background-color: grey;
@@ -25,7 +25,7 @@ header {
 }
 
 footer {
-  margin-top: 4%;
+  margin-top: 0;
 }
 
 header h1 {
@@ -63,12 +63,24 @@ li h3 {
   color: black;
 }
 
+.viewAlbum {
+  width: 100%;
+}
+
+.navBar {
+  background-color: grey;
+  height: 430px;
+  width: 19%;
+  display: inline-block;
+}
+
 .imagesClass {
   display: inline-block;
   vertical-align: top;
   margin-bottom: 25%;
   margin-left: 0%;
   height: 150px;
+  width: 80%;
 }
 
 .photoClass {
@@ -88,4 +100,19 @@ width: 100%;
 .photoClass h3 {
   text-align: center;
   color: black;
+}
+
+.navBarList {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  margin-bottom: 0%;
+  margin-left: 22%;
+  color: white;
+  height: 70px;
+}
+
+.navBarList h2 {
+  margin-bottom: 0;
+  margin-top: 0;
 }

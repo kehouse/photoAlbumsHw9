@@ -42,13 +42,33 @@ var getAlbumPhotos = function (albumclicked) {
 var setPhotoDisplay = function (albumselected){
   var photoDisplay = "";
   _.each(getAlbumPhotos(selectedPage), function(element){
-    photoDisplay += "<div class='photoClass' id='" + element.photoRel + "'>"
+    photoDisplay +=
+    "<div class='photoClass' id='"
+    + element.photoRel + "'>"
     + "<img src ='" + element.photoThumb + "'>"
     + "<h3>" + element.photoName + "</h3>"
     + "</div>"
   });
   $(".imagesClass").html(photoDisplay);
 };
+
+// NavBar
+
+var navBarFunction = "";
+
+_.each(albums, function (element){
+  navBarFunction +=
+  // + "<div class='albumClass' rel='"
+  // + element.albumRel + "'>"
+  "<li class='navBarList'>"
+  + "<h2>"
+  + element.albumTitle
+  + "</h2>"
+  + "</li>"
+  + "</div>";
+});
+
+$('.navBar').append(navBarFunction);
 
 
 });
