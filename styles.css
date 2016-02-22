@@ -4,6 +4,14 @@ body {
   font-size: 100%;
 }
 
+section {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
 header, footer {
   display: block;
   width: 100%;
@@ -51,6 +59,33 @@ width: 100%;
 }
 
 li h3 {
+  text-align: center;
+  color: black;
+}
+
+.imagesClass {
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 25%;
+  margin-left: 0%;
+  height: 150px;
+}
+
+.photoClass {
+  display: inline-block;
+  vertical-align: top;
+  width: 25%;
+  margin-bottom: 6%;
+  margin-left: 7%;
+  height: 150px;
+}
+
+.photoClass img {
+height: 150px;
+width: 100%;
+}
+
+.photoClass h3 {
   text-align: center;
   color: black;
 }
