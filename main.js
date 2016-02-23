@@ -96,23 +96,27 @@ navBarFunction += createNavBarStr(element);
 });
 $('.navBar').append(navBarFunction);
 
-var asideNavBar = $('aside').find('li');
-asideNavBar.click(function(event){
-  event.preventDefault();
-  var album = $(this).attr('rel');
-  var albumToPutOnPage = albums.filter(function(element){
-    return element.albumTitle === album;
-  }).pop();
-  var albumHtmlStr="";
-  albumToPutOnPage.photos.forEach(function(el){
-   albumHtmlStr +=
-   "<img rel= 'picturePage' id= '"
-   + el.photoName
-   + "' src ='"
-   + el.photoThumb
-   +"' />";
+
+var button = $('.navClass');
+button.click(function(event){
+  selectedPage = $(this).attr('rel');
+  setPhotoDisplay(selectedPage);
   });
-  $('.imagesClass').prepend(albumHtmlStr);
+var getAlbumPhotos = function (albumclicked) {
+var photoArray = albums.filter(function(element){
+  return element.albumRel === albumclicked;
 });
+return photoArray[0].photos;
+};
+
+var setPhotoDisplay = function (albumselected){
+var photoDisplay = "";
+_.each(getAlbumPhotos(selectedPage), function(element){
+var createPhotoDisplayStr = _.template($('#photoTemplate').html());
+  photoDisplay += createPhotoDisplayStr(element);
+});
+$(".imagesClass").html(photoDisplay);
+};
+
 
 });
