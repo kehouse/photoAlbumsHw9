@@ -2,24 +2,12 @@ $(document).ready(function() {
 
 // Front Page Cover Albums
 
-var imageAlbums = "";
-
-_.each(albums, function (element){
-  imageAlbums += "<ul>"
-  + "<div class='albumClass' rel='"
-  + element.albumRel + "'>"
-  + "<li><img src= '"
-  + element.albumCover
-  + "' />"
-  + "<h3>"
-  + element.albumTitle
-  + "</h3>"
-  + "</li>"
-  + "</div>"
-  + "</ul>";
-});
-
-$('.home').append(imageAlbums);
+  var imageAlbums = "";
+  albums.forEach(function(element){
+  var createImageAlbumsStr = _.template($('#albumTemplate').html());
+  imageAlbums += createImageAlbumsStr(element);
+  });
+  $('.home').append(imageAlbums);
 
 // To click the albums to show each album
 
@@ -42,33 +30,77 @@ var getAlbumPhotos = function (albumclicked) {
 var setPhotoDisplay = function (albumselected){
   var photoDisplay = "";
   _.each(getAlbumPhotos(selectedPage), function(element){
-    photoDisplay +=
-    "<div class='photoClass' id='"
-    + element.photoRel + "'>"
-    + "<img src ='" + element.photoThumb + "'>"
-    + "<h3>" + element.photoName + "</h3>"
-    + "</div>"
+  var createPhotoDisplayStr = _.template($('#photoTemplate').html());
+    photoDisplay += createPhotoDisplayStr(element);
   });
   $(".imagesClass").html(photoDisplay);
 };
 
+// To click on the photos and have them enlarged
+
+var selectedPhoto = "";
+$('.imagesClass').on('click', '.photoClass', function(event){
+  event.preventDefault();
+  $("section").removeClass('active');
+  $('.viewPhoto').addClass('active');
+  var photoHtmlStr = "<img src ='" + $(this).data('photo-full') + "'>"
+  $('.photoLarge').html(photoHtmlStr);
+  });
+
+  // this is the long and complicated way
+
+  // selectedPhoto = $(this).attr('rel');
+  // var albumName = $(this).children('img').attr('src').split("/")[1];
+  // var photoToPutOnPage = albums.filter(function(element){
+  //   return albumName === element.albumTitle.toLowerCase();
+  // }).pop();
+  // var rightPhoto = photoToPutOnPage.photos.filter(function(element) {
+  //   return element.photoRel === selectedPhoto;
+  // }).pop();
+  // console.log(rightPhoto);
+  // var photoHtmlStr = "";
+  // // photoToPutOnPage.photos.forEach(function(element){
+    // photoHtmlStr +=
+    // "<h1>"
+    // + rightPhoto.photoName
+    // + "</h1>"
+    // + "<img src ='" + rightPhoto.photoFull + "'>"
+  // // });
+  // console.log(photoHtmlStr);
+
+  // setPhotoDisplay(selectedPhoto);
+
+// var getPhotos = function (photoclicked) {
+//   var photoArr = albums.photos.filter(function(element){
+//     return element.photoRel === photoclicked;
+//   });
+//   return photoArr[0].photos;
+// };
+//
+// var showPhotoDisplay = function (photoselected){
+//   var photoDisplayFull = "";
+//   _.each(getPhotos(selectedPhoto), function(element){
+//     photoDisplayFull +=
+//     "<h1>" + element.photoName + "</h1>"
+//     + "<img src ='" + element.photoFull + "'>"
+//   });
+//   $(".photoLarge").html(photoDisplayFull);
+// };
+
 // NavBar
 
 var navBarFunction = "";
-
 _.each(albums, function (element){
-  navBarFunction +=
-  // + "<div class='albumClass' rel='"
-  // + element.albumRel + "'>"
-  "<li class='navBarList'>"
-  + "<h2>"
-  + element.albumTitle
-  + "</h2>"
-  + "</li>"
-  + "</div>";
+var createNavBarStr = _.template($('#navTemplate').html());
+navBarFunction += createNavBarStr(element);
 });
-
 $('.navBar').append(navBarFunction);
+
+// var navBarClick = $('aside').find('li');
+// navBarClick.click(function(event){
+//   event.preventDefault();
+//   var
+// })
 
 
 });

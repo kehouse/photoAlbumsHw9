@@ -5,6 +5,29 @@
     <title>Photo Album</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="styles.css" media="screen" title="no title" charset="utf-8">
+    <script type="text/template" id="albumTemplate">
+      <ul>
+        <div class='albumClass' rel='<%= albumRel %>'>
+        <li>
+        <img src= '<%= albumCover %>' />
+        <h3><%= albumTitle %></h3>
+        </li>
+        </div>
+      </ul>
+    </script>
+    <script type="text/template" id="photoTemplate">
+        <div class='photoClass' rel='<%= photoRel %>' data-photo-full= '<%= photoFull %>'>
+        <img src= '<%= photoThumb %>' />
+        <h3><%= photoName %></h3>
+        </div>
+    </script>
+    <script type="text/template" id="navTemplate">
+        <div class='navClass' rel='<%= albumRel %>'>
+        <li class='navBarList'>
+        <h2><%= albumTitle %></h2>
+        </li>
+        </div>
+    </script>
   </head>
   <body>
 
@@ -19,9 +42,13 @@
       <section class="viewAlbum">
         <aside class="navBar">
         </aside>
-        <div class="imagesClass">
+        <div class="imagesClass active">
           <h1 class="albumName">Album Name</h1>
         </div>
+     </section>
+
+     <section class="viewPhoto">
+       <div class="photoLarge"></div>
      </section>
 
     <footer>

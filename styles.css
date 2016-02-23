@@ -69,7 +69,7 @@ li h3 {
 
 .navBar {
   background-color: grey;
-  height: 430px;
+  height: 650px;
   width: 19%;
   display: inline-block;
 }
@@ -79,6 +79,7 @@ li h3 {
   vertical-align: top;
   margin-bottom: 25%;
   margin-left: 0%;
+  margin-top: 10%;
   height: 150px;
   width: 80%;
 }
@@ -109,10 +110,10 @@ width: 100%;
   margin-bottom: 0%;
   margin-left: 22%;
   color: white;
-  height: 70px;
+  height: 50px;
 }
 
 .navBarList h2 {
   margin-bottom: 0;
-  margin-top: 0;
+  margin-top: 150px;
 }
