@@ -96,11 +96,23 @@ navBarFunction += createNavBarStr(element);
 });
 $('.navBar').append(navBarFunction);
 
-// var navBarClick = $('aside').find('li');
-// navBarClick.click(function(event){
-//   event.preventDefault();
-//   var
-// })
-
+var asideNavBar = $('aside').find('li');
+asideNavBar.click(function(event){
+  event.preventDefault();
+  var album = $(this).attr('rel');
+  var albumToPutOnPage = albums.filter(function(element){
+    return element.albumTitle === album;
+  }).pop();
+  var albumHtmlStr="";
+  albumToPutOnPage.photos.forEach(function(el){
+   albumHtmlStr +=
+   "<img rel= 'picturePage' id= '"
+   + el.photoName
+   + "' src ='"
+   + el.photoThumb
+   +"' />";
+  });
+  $('.imagesClass').prepend(albumHtmlStr);
+});
 
 });
